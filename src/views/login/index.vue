@@ -1,21 +1,42 @@
 <template>
   <div class="login-container">
     <transition name="form-fade" mode="in-out" >
-      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left" v-show="showLoginForm">
         <div class="title-container">
           <h3 class="title">Login Form</h3>
         </div>
 
         <el-form-item prop="userName">
-          <el-input ref="userName" v-model="loginForm.userName" placeholder="请输入用户名" :prefix-icon="userNameIcon" name="useName" @focus="userFocusHandle(true)"  @blur="userFocusHandle(false)" type="text" tabindex="1" auto-complete="on" />
+          <el-input
+            ref="userName"
+            v-model="loginForm.userName"
+            placeholder="| 请输入用户名"
+            :prefix-icon="userNameIcon"
+            name="useName"
+            @focus="userFocusHandle(true)"
+            @blur="userFocusHandle(false)"
+            type="text"
+            tabindex="1"
+            auto-complete="on"
+          />
         </el-form-item>
 
         <el-form-item prop="password">
-          <el-input ref="password" v-model="loginForm.password" type="password" :prefix-icon="passwordIcon" @focus="passwordFocusHandle(true)" @blur="passwordFocusHandle(false)"
-            name="password" placeholder="请输入密码" tabindex="2" auto-complete="on" @keyup.enter.native="handleLogin" />
+          <el-input
+            ref="password"
+            v-model="loginForm.password"
+            type="password"
+            :prefix-icon="passwordIcon"
+            @focus="passwordFocusHandle(true)"
+            @blur="passwordFocusHandle(false)"
+            name="password"
+            placeholder="| 请输入密码"
+            tabindex="2"
+            auto-complete="on"
+            @keyup.enter.native="handleLogin" />
         </el-form-item>
 
-        <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+        <el-button :loading="loading" type="primary"  class="submit_btn" @click.native.prevent="handleLogin">登录</el-button>
 
       </el-form>
     </transition>
@@ -27,6 +48,7 @@ export default {
   name: 'Login',
   data () {
     return {
+      showLoginForm: false,
       userNameFocus: false,
       passwordFocus: false,
       loginForm: {
@@ -37,9 +59,11 @@ export default {
         userName: [{ required: true, triggr: 'blur', message: '请输入用户名' }],
         password: [{ required: true, triggr: 'blur', message: '请输入密码' }]
       },
-      loading: false,
-      passwordType: 'password'
+      loading: false
     }
+  },
+  mounted () {
+    this.showLoginForm = true
   },
   watch: {
 
@@ -70,7 +94,8 @@ export default {
 .login-container{
   height: 100%;
   width: 100%;
-  background-color: #2d3a4b;
+  // background-color: #2d3a4b;
+  background: url('../../assets/loginBg.jpg') no-repeat;
   overflow: hidden;
   .login-form {
     //相对定位，脱离文档流，“这个元素会偏移某个距离。但是该元素仍保持其未定位前的形状，它原本所占的空间仍保留。”
@@ -82,7 +107,18 @@ export default {
     padding: 20px 35px 0;
     margin: 0 auto;
     overflow: hidden;
+    opacity: 0.9;
     background-color:#324056;
+    border-radius: 10px;
+
+    .submit_btn{
+      width: 100%;
+      font-size: 16px;
+      background-color: #1aa2ff;
+      border: 1px solid #1aa2ff;
+      color: #ffffff;
+      margin-bottom:30px;
+    }
   }
   .title-container{
     position: relative;
@@ -94,17 +130,40 @@ export default {
       font-weight: bold;
     }
   }
-}
 
-/*动画效果*/
-.form-fade-enter-active, .form-fade-leave-active {
-  transition: all 0.8s;
-}
-.form-fade-enter, .form-fade-leave-active {
-  transform: translate3d(0, -50px, 0);
-  opacity: 0;
-}
-.focus {
-  color: #1aa2ff;
+  /* 修改element 样式 */
+  input {
+    background:#2d3a4b;
+    border-color: #2d3a4b;
+    color: #c3c3c3;
+    height: 45px;
+  }
+  .el-form-item {
+    margin-top: 30px;
+  }
+  .el-input__icon {
+    left: 0;
+  }
+  .el-form-item__error {
+    color: #e04f78;
+    padding-top: 8px;
+  }
+  .el-input__icon + .el-input__inner{
+    padding-left:40px;
+  }
+  .el-form-item.is-error .el-input__inner{
+    border-color:#e04f78;
+  }
+ .focus {
+    color: #1aa2ff;
+  }
+  /*动画效果*/
+  .form-fade-enter-active, .form-fade-leave-active {
+    transition: all 0.8s;
+  }
+  .form-fade-enter, .form-fade-leave-active {
+    transform: translate3d(0, -50px, 0);
+    opacity: 0;
+  }
 }
 </style>

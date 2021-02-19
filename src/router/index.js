@@ -9,6 +9,10 @@ export default new Router({
       path: '/',
       component: () => import('@/views/login/index'),
       hidden: true
+    },
+    {
+      path: '/Layout',
+      component: () => import('@/layout/index')
     }
   ]
 })
