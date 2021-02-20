@@ -1,9 +1,9 @@
 <template>
     <el-container class="home-container">
         <el-container>
-            <el-aside :width="sidebar.opened ? '210px':'54px'">
+            <el-aside :width="sidebar.opened ? '210px':'50px'">
               <!-- <el-scrollbar wrap-class="scrollbar-wrapper"> -->
-                <el-scrollbar>
+              <el-scrollbar>
                 <sidebar/>
               </el-scrollbar>
             </el-aside>
@@ -55,14 +55,16 @@ export default {
   // overflow: hidden;
   padding: 0;
 }
-
+</style>
+<style>
 .el-scrollbar {
   height: 100%;
 }
-.el-scrollbar__wrap {
-  overflow-x: hidden;
-}
+
 .el-scrollbar__bar.is-vertical {
   right: 0px;
+}
+.el-scrollbar__wrap {
+  overflow-x: hidden;
 }
 </style>
