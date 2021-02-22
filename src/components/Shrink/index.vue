@@ -1,6 +1,6 @@
 <template>
-  <div style="padding:0 15px;" >
-      <i :class="{'el-icon-s-fold': isActive,'el-icon-s-unfold': !isActive}" class="shrink" @click="toggleClick"></i>
+  <div style="padding:0 15px;"  @click="toggleClick">
+      <i :class="{'el-icon-s-fold': isActive,'el-icon-s-unfold': !isActive}" class="shrink"></i>
   </div>
 </template>
 

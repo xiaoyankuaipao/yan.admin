@@ -4,6 +4,7 @@
         <breadcrumb class="breadcrumb-container" />
 
         <div class="right-menu">
+          <screenfull />
           <user />
         </div>
         <!-- 修改密码对话框 -->
@@ -15,6 +16,7 @@
 import { mapGetters } from 'vuex'
 import Shink from '@/components/Shrink/index'
 import Breadcrumb from '@/components/Breadcrumb'
+import Screenfull from '@/components/Screenfull'
 import User from '@/components/User'
 export default {
   data () {
@@ -30,6 +32,7 @@ export default {
   components: {
     Shink,
     Breadcrumb,
+    Screenfull,
     User
   },
   computed: {
@@ -77,6 +80,7 @@ export default {
   height: 100%;
   line-height: 45px;
   padding-right: 20px;
+  display: flex;
 }
 
 </style>
