@@ -1,6 +1,6 @@
 <template>
     <div style="padding:0 30px;" @click="fullscreenClick">
-        <el-tooltip :content="iconTip" placement="bottom" effect="light">
+        <el-tooltip :content="this.isFullscreen ? '取消全屏' : '全屏'" placement="bottom" effect="light">
           <i class="el-icon-full-screen"></i>
         </el-tooltip>
     </div>
@@ -11,10 +11,25 @@ import screenfull from 'screenfull'
 export default {
   data () {
     return {
-      isFullscreen: false
+      isFullscreen: false,
+      iconTip: '全屏'
     }
   },
+  mounted () {
+    this.init()
+  },
+  beforeDestroy () {
+    this.destroy()
+  },
   methods: {
+    change () {
+      this.isFullscreen = screenfull.isFullscreen
+    },
+    init () {
+      if (screenfull.isEnabled) {
+        screenfull.on('change', this.change)
+      }
+    },
     fullscreenClick () {
       if (!screenfull.isEnabled) {
         this.$message({
@@ -24,12 +39,11 @@ export default {
         return false
       }
       screenfull.toggle()
-    }
-  },
-  computed: {
-    iconTip () {
-      console.log(screenfull.isFullscreen)
-      return (screenfull.isFullscreen ? '取消全屏' : '全屏')
+    },
+    destory () {
+      if (screenfull.isEnabled) {
+        screenfull.off('change')
+      }
     }
   }
 }
