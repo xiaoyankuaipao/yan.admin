@@ -1,5 +1,5 @@
 <template>
-    <div style="padding:0 30px;" @click="fullscreenClick">
+    <div style="padding:0 15px;" @click="fullscreenClick">
         <el-tooltip :content="this.isFullscreen ? '取消全屏' : '全屏'" placement="bottom" effect="light">
           <i class="el-icon-full-screen"></i>
         </el-tooltip>

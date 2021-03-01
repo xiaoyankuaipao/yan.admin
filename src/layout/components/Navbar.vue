@@ -4,7 +4,7 @@
         <breadcrumb class="breadcrumb-container" />
 
         <div class="right-menu">
-          <screenfull />
+          <screenfull class="screenfull-container"/>
           <user />
         </div>
         <!-- 修改密码对话框 -->
@@ -62,7 +62,7 @@ export default {
   float: left;
   cursor: pointer;
 }
-.shink-container:hover{
+.shink-container:hover,.screenfull-container:hover{
   background-color: #d9d9d9;
   transition: background-color .28s;
 }
@@ -72,7 +72,6 @@ export default {
   height: 100%;
   float: left;
   cursor: pointer;
-  /* transition: background .3s; */
 }
 
 .right-menu {
