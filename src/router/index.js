@@ -12,7 +12,14 @@ export default new Router({
     },
     {
       path: '/',
-      component: () => import('@/layout/index')
+      component: () => import('@/layout/index'),
+      children: [
+        {
+          path: '/test',
+          component: () => import('@/views/test/index'),
+          meta: ['选项1']
+        }
+      ]
     }
   ]
 })

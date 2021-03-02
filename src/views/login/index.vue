@@ -77,6 +77,7 @@ export default {
     },
     handleLogin () {
       this.loading = true
+      this.$router.push('/')
     }
   },
   computed: {
