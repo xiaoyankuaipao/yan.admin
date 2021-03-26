@@ -2,7 +2,6 @@
     <el-container class="home-container">
         <el-container>
             <el-aside :width="sidebar.opened ? '210px':'50px'">
-              <!-- <el-scrollbar wrap-class="scrollbar-wrapper"> -->
               <el-scrollbar>
                 <sidebar/>
               </el-scrollbar>

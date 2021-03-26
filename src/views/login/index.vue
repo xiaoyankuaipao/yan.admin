@@ -76,7 +76,24 @@ export default {
       this.passwordFocus = idFocus
     },
     handleLogin () {
-      this.loading = true
+      this.$refs.loginForm.validate(async (valid) => {
+        if (valid) {
+          this.loading = true
+          this.$store.dispatch('user/login', {userName: this.loginForm.userName, password: this.loginForm.password, clientId: 'vue-manage'}).then(() => {
+            this.$router.push('/')
+            this.loading = false
+          }).catch(() => {
+            this.loading = false
+          })
+        } else {
+          this.$notify.error({
+            title: '错误',
+            message: '请输入正确的用户名密码',
+            offset: 100
+          })
+          return false
+        }
+      })
       this.$router.push('/')
     }
   },
