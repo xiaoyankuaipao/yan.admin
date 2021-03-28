@@ -1,7 +1,7 @@
 const getters = {
   sidebar: state => state.sidebarModule.sidebar,
-  token: state => state.userModule.token,
-  name: state => state.userModule.name,
-  roles: state => state.userModule.roles
+  token: state => state.user.token,
+  name: state => state.user.name,
+  roles: state => state.user.roles
 }
 export default getters

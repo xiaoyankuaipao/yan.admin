@@ -24,6 +24,20 @@ const mutations = {
 }
 
 const actions = {
+  async loginEx({commit}, userInfo) {
+    console.log('here')
+    try{
+      const res = await login(userInfo)
+      if(res.state == 1) {
+        console.log(res)
+        commit('SET_TOKEN', res.token)
+        setToken(resposne.token)
+      }
+    }
+    catch(error) {
+
+    }
+  },
   login ({commit}, userInfo) {
     return new Promise((resolve, reject) => {
       login(userInfo).then(resposne => {

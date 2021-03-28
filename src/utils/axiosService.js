@@ -30,6 +30,7 @@ service.interceptors.response.use(
     return response
   },
   error => {
+    console.log(error)
     if (error.response) {
       if (error.response.status === 504) {
         Message({
@@ -102,4 +103,4 @@ service.DELETE = async (url, data) => {
   return result.data
 }
 
-export { service }
+export default service;
