@@ -82,8 +82,14 @@ export default {
           this.$store.dispatch('user/login', {userName: this.loginForm.userName, password: this.loginForm.password, clientId: 'vue-manage'}).then(() => {
             this.$router.push('/')
             this.loading = false
-          }).catch(() => {
+          }).catch(error => {
+            console.log(error)
             this.loading = false
+            this.$message({
+              type: 'error',
+              title: '错误',
+              message: error.toString()
+            })
           })
         } else {
           this.$notify.error({
@@ -94,7 +100,6 @@ export default {
           return false
         }
       })
-      this.$router.push('/')
     }
   },
   computed: {

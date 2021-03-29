@@ -24,29 +24,17 @@ const mutations = {
 }
 
 const actions = {
-  async loginEx({commit}, userInfo) {
-    console.log('here')
-    try{
-      const res = await login(userInfo)
-      if(res.state == 1) {
-        console.log(res)
-        commit('SET_TOKEN', res.token)
-        setToken(resposne.token)
-      }
-    }
-    catch(error) {
-
-    }
-  },
   login ({commit}, userInfo) {
     return new Promise((resolve, reject) => {
       login(userInfo).then(resposne => {
-        console.log(resposne)
-        commit('SET_TOKEN', resposne.token)
-        setToken(resposne.token)
-        resolve()
+        if(resposne.state == 1){
+          commit('SET_TOKEN','Bearer ' + resposne.token.access_token)
+          setToken('Bearer ' + resposne.token.access_token)
+          resolve()
+        } else{
+          throw("用户名或者密码错误")
+        }
       }).catch(error => {
-        console.log(error)
         reject(error)
       })
     })
