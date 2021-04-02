@@ -1,10 +1,14 @@
 <template>
     <div class="navbar">
+        <!-- 收缩 -->
         <shink :is-active="sidebar.opened" class="shink-container" @toggleClick="toggleSideBar" />
+        <!-- 面包屑 -->
         <breadcrumb class="breadcrumb-container" />
 
         <div class="right-menu">
+          <!-- 全屏 -->
           <screenfull class="screenfull-container"/>
+          <!-- 用户信息 -->
           <user />
         </div>
         <!-- 修改密码对话框 -->
@@ -42,7 +46,7 @@ export default {
   },
   methods: {
     toggleSideBar () {
-      this.$store.dispatch('sidebarModule/toggleSidebar')
+      this.$store.dispatch('sidebar/toggleSidebar')
     }
   }
 }

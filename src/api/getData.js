@@ -1,4 +1,4 @@
-import  axiosService  from '@/utils/axiosService'
+import axiosService from '@/utils/axiosService'
 
 /**
  * 登录
@@ -9,6 +9,11 @@ export const login = (data) => axiosService.POST('/api/identityservice/Login/Req
  * 获取用户信息
  */
 export const getUserInfo = () => axiosService.GET('/api/systemmanageservice/User/GetUserInfo')
+
+/**
+ * 获取用户信息和菜单
+ */
+export const getUserInfoAndMenus = () => axiosService.GET('/api/systemmanageservice/User/GetUserInfoAndMenu')
 
 /**
  * 获取用户菜单

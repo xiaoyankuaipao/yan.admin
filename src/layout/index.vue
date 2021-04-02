@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     sidebar () {
-      return this.$store.state.sidebarModule.sidebar
+      return this.$store.state.sidebar.sidebar
     }
   }
 }

@@ -119,6 +119,7 @@ export default {
   width: 100%;
   // background-color: #2d3a4b;
   background: url('../../assets/loginBg.jpg') no-repeat;
+  background-size: 100% 100%;
   overflow: hidden;
   .login-form {
     //相对定位，脱离文档流，“这个元素会偏移某个距离。但是该元素仍保持其未定位前的形状，它原本所占的空间仍保留。”
