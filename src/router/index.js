@@ -32,10 +32,10 @@ export default new Router({
     {
       path: '/',
       component: Layout,
-      redirect: '/dashboard',
+      redirect: '/manage',
       children: [{
-        path: 'dashboard',
-        name: 'Dashboard',
+        path: 'manage',
+        name: 'manage',
         component: () => import('@/views/dashboard/index'),
         meta: { title: 'Dashboard', icon: 'dashboard' }
       }]

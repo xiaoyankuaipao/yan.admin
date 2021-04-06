@@ -14,7 +14,7 @@
     </el-container>
 </template>
 <script>
-import Sidebar from './components/Sidebar'
+import Sidebar from '@/components/LeftMenu/index'
 import AppMain from './components/AppMain'
 import Navbar from './components/Navbar'
 export default {
