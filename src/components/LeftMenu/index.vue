@@ -5,7 +5,7 @@
         :collapse="isCollapse"
         background-color="#304156"
         text-color="#bfcbd9"
-        :unique-opened="false"
+        :unique-opened="true"
         active-text-color="#409EFF"
         :collapse-transition="false"
         mode="vertical"
@@ -45,6 +45,22 @@ export default {
 }
 </script>
 
-<style>
+<style  lang="less">
+.el-menu-item {
+  background-color: #1f2d3d !important;
+  &:hover{
+    background-color: #001528 !important;
+  }
+}
+.el-scrollbar {
+  height: 100%;
+}
+
+.el-scrollbar__bar.is-vertical {
+  right: 0px;
+}
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
 
 </style>

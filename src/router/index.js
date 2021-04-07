@@ -18,17 +18,6 @@ export default new Router({
       component: () => import('@/views/login/index'),
       hidden: true
     },
-    // {
-    //   path: '/',
-    //   component: () => import('@/layout/index'),
-    //   children: [
-    //     {
-    //       path: '/test',
-    //       component: () => import('@/views/test/index'),
-    //       meta: ['选项1']
-    //     }
-    //   ]
-    // }
     {
       path: '/',
       component: Layout,

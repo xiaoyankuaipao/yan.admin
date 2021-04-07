@@ -25,7 +25,6 @@ import User from '@/components/User'
 export default {
   data () {
     return {
-      userName: 'yanchuanpeng',
       img: {
         user: require('../../assets/user.jpg')
       },

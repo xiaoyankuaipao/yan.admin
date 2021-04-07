@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p style="margin-top:0px;margin-bottom:0px;">
     <template v-for="(item, index) in data">
       <el-menu-item :key="index" v-if="item.children==null ||  item.children.length==0" :index="item.address">
         <i :class="item.icon"></i>
@@ -8,7 +8,7 @@
       <el-submenu :key="index" v-if="item.children && item.children.length" :index="item.id.toString()">
         <template slot="title">
           <i :class="item.icon"></i>
-          <span v-text="item.name">导航一</span>
+          <span v-text="item.name"></span>
         </template>
         <submenu :data="item.children"></submenu>
       </el-submenu>
@@ -42,6 +42,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style  lang="less">
 </style>
