@@ -30,13 +30,15 @@ export default new Router({
       }]
     },
     {
-      path: '/test',
+      path: '/xx',
       component: Layout,
+      // redirect: '/categoryList',
+      name: '文章管理',
       children: [{
-        path: 'test',
-        name: '导航一',
-        component: () => import('@/views/test/index'),
-        meta: { title: '导航一', icon: 'test' }
+        path: '/categoryList',
+        name: 'Table',
+        component: () => import('@/views/articlemanage/categorymanage/index'),
+        meta: ['文章管理', '分类管理']
       }]
     }
   ]
