@@ -26,9 +26,14 @@ export const getUserMenu = () => axiosService.GET('/api/systemmanageservice/Perm
 export const getUserBtn = () => axiosService.GET('/api/systemmanageservice/Permission/GetUserBtnPermission')
 
 /**
- * 添加或者修改文章分类
+ * 添加章分类
  */
-export const addOrUpdateCategory = data => axiosService.POST('/api/articlemanage/ArticleCategory',data)
+export const addCategory = data => axiosService.POST('/api/articlemanage/ArticleCategory', data)
+
+/**
+ * 添加章分类
+ */
+export const updateCategory = data => axiosService.PUT('/api/articlemanage/ArticleCategory', data)
 
 /**
   * 删除文章分类

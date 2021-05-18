@@ -106,39 +106,38 @@ export default {
     async initData () {
       try {
         this.getApiData()
-      }
-      catch (err) {
+      } catch (err) {
         this.$message.error('获取数据失败！')
       }
     },
-    handleSizeChanged(val) {
+    handleSizeChanged (val) {
       this.limit = val
       this.getApiData()
     },
-    handleCurrentPageChanged(val) {
+    handleCurrentPageChanged (val) {
       this.currentPage = val
       this.offset = (val - 1) * this.limit
       this.getApiData()
     },
-    onCurrentRowChange(selection) {
+    onCurrentRowChange (selection) {
       this.selectRow = selection
     },
-    onSelectionChange(selection) {
+    onSelectionChange (selection) {
       this.selectRow = selection
     },
-    getSelectRow() {
-      this.selectRow
+    getSelectRow () {
+      return this.selectRow
     },
-    getTableData() {
+    getTableData () {
       return this.tableData
     },
-    search(parmas) {
-      for ( var i in parmas) {
+    search (parmas) {
+      for (var i in parmas) {
         this.params[i] = parmas[i]
-       }
-       this.getApiData()
+      }
+      this.getApiData()
     },
-    clearSelection() {
+    clearSelection () {
       this.$refs.table.clearSelection()
     }
   }
