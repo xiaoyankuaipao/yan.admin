@@ -10,12 +10,16 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN'
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 import '@/permission'
 
 Vue.config.productionTip = false
 
 Vue.use(plugin) // 注册全局组件
 Vue.use(ElementUI, { locale })
+Vue.use(mavonEditor)
 
 /* eslint-disable no-new */
 new Vue({

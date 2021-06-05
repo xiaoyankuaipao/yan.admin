@@ -36,9 +36,29 @@ export default new Router({
       name: '文章管理',
       children: [{
         path: '/categoryList',
-        name: 'Table',
+        name: 'categoryList',
         component: () => import('@/views/articlemanage/categorymanage/index'),
         meta: ['文章管理', '分类管理']
+      }, {
+        path: '/articleList',
+        name: 'articleList',
+        component: () => import('@/views/articlemanage/articlemanage/index'),
+        meta: ['文章管理', '文章管理']
+      }, {
+        path: '/userList',
+        name: 'userList',
+        component: () => import('@/views/systemmanage/user/index'),
+        meta: ['系统管理', '用户管理']
+      }, {
+        path: '/menuList',
+        name: 'menuList',
+        component: () => import('@/views/articlemanage/articlemanage/index'),
+        meta: ['系统管理', '菜单列表']
+      }, {
+        path: '/roleList',
+        name: 'roleList',
+        component: () => import('@/views/systemmanage/role/index'),
+        meta: ['系统管理', '角色列表']
       }]
     }
   ]

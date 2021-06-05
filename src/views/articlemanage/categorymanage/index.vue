@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix" v-text="title"></div>
       <el-row>
         <el-button-group style="margin-bottom:10px;">
-          <el-button type="primary" icon="el-icon-first-aid-kit" @click="onCreate()">创建</el-button>
+          <el-button type="primary" icon="el-icon-first-aid-kit" @click="onCreate">创建</el-button>
           <el-button type="primary" icon="el-icon-edit" @click="onUpdate">修改</el-button>
           <el-button type="danger" icon="el-icon-delete" @click="onDelete">删除</el-button>
         </el-button-group>

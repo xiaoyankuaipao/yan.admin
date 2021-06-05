@@ -44,3 +44,82 @@ export const deleteCategory = data => axiosService.DELETE('/api/articlemanage/Ar
   * 获取文章分类列表
   */
 export const getCategoryList = () => axiosService.GET('/api/articlemanage/ArticleCategory/GetArticleCategoryList')
+
+/**
+ * 根据文章分类分页获取文章
+ */
+export const getArticlePageByCategory = data => axiosService.GET('/api/articlemanage/Artilce/GetArticlePageByCategory', data)
+
+/**
+ * 添加文章
+ */
+export const addArticle = data => axiosService.POST('/api/articlemanage/Artilce/AddArticle', data)
+
+/**
+ * 编辑文章
+ */
+export const editArticle = data => axiosService.PUT('/api/articlemanage/Artilce/EditArticle', data)
+
+/**
+ * 删除文章
+ */
+export const deleteArticle = data => axiosService.DELETE('/api/articlemanage/Artilce/DeleteArticle/' + data)
+
+/**
+ * 文章编辑上传图片
+ */
+export const uploadPicture = data => axiosService.POST('/api/articlemanage/Picture', data)
+
+/**
+ * 根据文章Id获取文章的详细信息
+ */
+export const getArticleById = data => axiosService.GET('/api/articlemanage/Artilce/GetArticleById/' + data)
+
+export const getAllTag = () => axiosService.GET('/api/articlemanage/ArticleTag/GetAllTagList')
+
+/**
+ * 获取角色列表
+ */
+export const getRolelist = () => axiosService.GET('/api/systemmanageservice/role/GetRoleList')
+
+/**
+ *
+ * 根据角色ID查询角色信息
+ */
+export const getRoleById = data => axiosService.GET('/api/systemmanageservice/role/GetRoleById/' + data)
+
+/**
+  *
+  * 添加或者修改角色
+  */
+export const addOrUpdateRole = data => axiosService.POST('/api/systemmanageservice/role/', data)
+
+/**
+  *
+  * 删除角色
+  */
+export const deleteRole = data => axiosService.DELETE('/api/systemmanageservice/role/' + data)
+
+/**
+ *
+ * 获取用户分页列表
+ */
+export const getUserListByPage = data => axiosService.GET('/api/systemmanageservice/User/GetUserList', data)
+
+/**
+  *
+  * 添加或者修改用户
+  */
+export const addOrupdateUser = data => axiosService.POST('/api/systemmanageservice/User', data)
+
+/**
+  *
+  * 删除用户
+  */
+export const deleteUser = data => axiosService.DELETE('/api/systemmanageservice/User/' + data)
+
+/**
+  *
+  * 设置用户角色
+  */
+export const setUserRole = data => axiosService.GET('/api/systemmanageservice/User/SetUserRole?userId=' + data.userId + '&roleId=' + data.roleId)

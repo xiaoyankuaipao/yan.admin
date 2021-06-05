@@ -17,7 +17,7 @@
             @blur="userFocusHandle(false)"
             type="text"
             tabindex="1"
-            auto-complete="on"
+            auto-complete="off"
           />
         </el-form-item>
 
