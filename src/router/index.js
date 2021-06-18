@@ -52,7 +52,7 @@ export default new Router({
       }, {
         path: '/menuList',
         name: 'menuList',
-        component: () => import('@/views/articlemanage/articlemanage/index'),
+        component: () => import('@/views/systemmanage/menu/index'),
         meta: ['系统管理', '菜单列表']
       }, {
         path: '/roleList',

@@ -123,3 +123,29 @@ export const deleteUser = data => axiosService.DELETE('/api/systemmanageservice/
   * 设置用户角色
   */
 export const setUserRole = data => axiosService.GET('/api/systemmanageservice/User/SetUserRole?userId=' + data.userId + '&roleId=' + data.roleId)
+
+/*
+ * 获取菜单树列表
+ */
+export const getMenuTree = ()=> axiosService.GET('/api/systemmanageservice/menu/GetMenuTree')
+
+/**
+ * 获取菜单ComboxTree
+ */
+export const getMenuComboxTree = () => axiosService.GET('/api/systemmanageservice/menu/GetMenuComboxTree')
+
+/**
+ * 添加菜单
+ */
+export const addMenu = data => axiosService.POST('/api/systemmanageservice/menu', data)
+
+/**
+ * 修改菜单
+ */
+export const updateMenu = data => axiosService.PUT('/api/systemmanageservice/menu', data)
+
+/**
+ * 删除菜单
+ */
+export const deleteMenu = data => axiosService.DELETE('/api/systemmanageservice/menu/' + data)
+

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card style="margion:10px;">
+        <el-card style="margin:10px;">
             <div slot="header" class="clearfix" v-text="title"></div>
             <el-row>
                 <el-button-group>
