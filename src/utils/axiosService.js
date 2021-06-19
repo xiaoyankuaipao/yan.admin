@@ -40,7 +40,7 @@ service.interceptors.response.use(
         })
         return Promise.reject(error)
       } else if (error.response.status === 401) {
-        MessageBox.confirm('尝试未经授权的操作，请先登录', 'Confirm logout', {
+        MessageBox.confirm('尝试未经授权的操作，请先登录', '', {
           confirmButtonText: '重新登录',
           cancelButtonText: '取消',
           type: 'warning'
