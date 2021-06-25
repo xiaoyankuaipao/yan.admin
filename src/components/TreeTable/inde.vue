@@ -1,6 +1,6 @@
 <template>
     <div >
-        <el-table ref="treeTable" border highlight-current-row :data="tableData" :empty-text="emptyText" row-key="id"
+        <el-table ref="treeTable" border highlight-current-row :data="tableData" :empty-text="emptyText" row-key="id" default-expand-all
           @selection-change="onSelectionChange"
           @current-change="onCurrentRowChange">
             <el-table-column :prop="treeColumn.prop" :label="treeColumn.label">
@@ -120,7 +120,7 @@ export default {
           parent = row.p
           parent.checked = true
           if (parent.p != null) {
-            this.changeParentState2(parent)
+            this.changeParentState(parent)
           }
         }
       } else {
@@ -141,6 +141,7 @@ export default {
         }
       }
     },
+    // 获取选中的标识 数组 外部调用
     getSelectedIds () {
       this.checkedIds.splice(0, this.checkedIds.length)
       this.tableData.forEach(row => {
@@ -149,7 +150,7 @@ export default {
         }
         this.getSelectedIdsInter(row)
       })
-      console.log(this.checkedIds)
+      return this.checkedIds
     },
     getSelectedIdsInter (row) {
       if (this.childrenField in row && row[this.childrenField].length > 0) {
@@ -167,20 +168,58 @@ export default {
     onCurrentRowChange (selection) {
       this.selectRow = selection
     },
+    // 获取选择的行，外部调用
     getSelectRow () {
       return this.selectRow
     },
+    // 获取表格数据，外部调用
     getTableData () {
       return this.tableData
     },
+    // 数据加载，外部调用
     search (parmas) {
       for (var i in parmas) {
         this.params[i] = parmas[i]
       }
       this.getApiData()
     },
+    // 清除选中，外部调用
     clearSelection () {
       this.$refs.treeTable.clearSelection()
+    },
+    // 根据ids 数组，选中行，外部调用
+    setChecked (ids) {
+      this.tableData.forEach(row => {
+        if (ids.indexOf(row.id) > -1) {
+          row.checked = true
+        }
+        this.setCheckedInter(row, ids)
+      })
+    },
+    setCheckedInter (row, ids) {
+      if (this.childrenField in row && row[this.childrenField].length > 0) {
+        row[this.childrenField].forEach(item => {
+          if (ids.indexOf(item.id) > -1) {
+            item.checked = true
+          }
+          this.setCheckedInter(item, ids)
+        })
+      }
+    },
+    // 清除所有选中，外部调用
+    clearAllChecked () {
+      this.tableData.forEach(row => {
+        row.checked = false
+        this.clearAllCheckedInter(row)
+      })
+    },
+    clearAllCheckedInter (row) {
+      if (this.childrenField in row && row[this.childrenField].length > 0) {
+        row[this.childrenField].forEach(item => {
+          item.checked = false
+          this.clearAllCheckedInter(item)
+        })
+      }
     }
   }
 }

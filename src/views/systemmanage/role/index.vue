@@ -31,6 +31,7 @@
 
 <script>
 import addOrUpdate from './addOrUpdate'
+import roleAccessManagement from './roleAccessManagement.vue'
 import {getRolelist, deleteRole} from '@/api/getData'
 export default {
   data () {
@@ -46,7 +47,8 @@ export default {
     }
   },
   components: {
-    addOrUpdate
+    addOrUpdate,
+    roleAccessManagement
   },
   methods: {
     onCreate () {
@@ -98,6 +100,10 @@ export default {
       }
     },
     onRoleAccessManagement () {
+      this.dialogTitle = '角色权限管理'
+      this.dialogType = 'roleAccessManagement'
+      this.dialogSize = 'large'
+      this.dialogVisible = true
     },
     onCloseDialog (success) {
       this.loading = false

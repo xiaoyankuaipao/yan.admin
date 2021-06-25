@@ -1,16 +1,16 @@
 <template>
   <div>
-    <el-card style="margin:10px">
+    <el-card style="margin:10px;">
       <div slot="header"  v-text="title"></div>
         <el-row>
           <el-button-group style="margin-bottom:10px;">
-            <el-button type="primary" icon="el-icon-plus">创建</el-button>
-            <el-button type="primary" icon="el-icon-edit">修改</el-button>
+            <el-button type="primary" icon="el-icon-plus" @click="onCreate">创建</el-button>
+            <el-button type="primary" icon="el-icon-edit" @click="onUpdate">修改</el-button>
             <el-button type="danger" icon="el-icon-delete" @click="onDelete">删除</el-button>
           </el-button-group>
         </el-row>
         <el-row>
-          <tree-table ref="menuTreeTable" :search-api="searchApi" :isHaveCheckBox='true' :tree-column="{prop:'name',label:'名称'}" children-field='children'>
+          <tree-table ref="menuTreeTable" :search-api="searchApi" :isHaveCheckBox='false' :tree-column="{prop:'name',label:'名称'}" children-field='children'>
             <template slot="columns">
               <el-table-column prop="address" label="地址"></el-table-column>
               <el-table-column prop="code" label="编码"></el-table-column>
@@ -19,21 +19,32 @@
           </tree-table>
         </el-row>
     </el-card>
+    <!-- 对话框 -->
+    <el-dialog :title="dialogTitle" :visible.sync="showDialog"  :close-on-click-modal="false" >
+      <detail-page v-if="showDialog" :formData="selectInfo" :editType="editType" @submit-complete="onCloseDialog"></detail-page>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { getMenuTree, deleteMenu } from '@/api/getData'
 import treeTable from '@/components/TreeTable/inde.vue'
+import edit from './addOrUpdate.vue'
 export default {
   components: {
-    treeTable
+    treeTable,
+    edit,
+    'detail-page': edit
   },
   data () {
     return {
       loading: false,
       title: '菜单管理',
-      searchApi: getMenuTree
+      searchApi: getMenuTree,
+      showDialog: false,
+      dialogTitle: '',
+      selectInfo: null,
+      editType: 1
     }
   },
   created () {
@@ -69,6 +80,45 @@ export default {
           type: 'error',
           message: '删除失败!'
         })
+      }
+    },
+    onCreate () {
+      this.selectInfo = {
+        id: '',
+        parentId: '1',
+        name: '',
+        code: '',
+        icon: '',
+        address: '',
+        menuType: ''
+      }
+      this.dialogTitle = '新增菜单'
+      this.editType = 1
+      this.showDialog = true
+    },
+    onUpdate () {
+      let row = this.$refs.menuTreeTable.getSelectRow()
+      if (row) {
+        this.selectInfo = {
+          id: row.id,
+          parentId: row.parentId,
+          name: row.name,
+          code: row.code,
+          icon: row.icon,
+          address: row.address,
+          menuType: row.menuType
+        }
+        this.dialogTitle = '编辑菜单'
+        this.editType = 2
+        this.showDialog = true
+      } else {
+        this.$message({ message: '请选择要修改的菜单', type: 'warning' })
+      }
+    },
+    onCloseDialog (success) {
+      this.showDialog = false
+      if (success) {
+        this.$refs.menuTreeTable.search()
       }
     }
   }

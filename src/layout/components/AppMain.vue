@@ -19,10 +19,12 @@ export default {
 
 <style scoped>
 .app-main {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 45px);
+  height: calc(100vh - 45px);
   width: 100%;
-  position: relative;
-  overflow: hidden;
+  /* position: relative; */
+  /* overflow: hidden; */
+  overflow-y: auto;
 }
 /* “+”是选择相邻兄弟bai,叫做“相邻兄弟选择器”选择器能够匹配指定元素后面相邻的兄弟元素。 */
 .fixed-header + .app-main {

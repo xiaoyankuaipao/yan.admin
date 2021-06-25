@@ -12,6 +12,7 @@ import locale from 'element-ui/lib/locale/lang/zh-CN'
 
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 
 import '@/permission'
 

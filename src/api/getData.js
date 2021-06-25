@@ -149,3 +149,14 @@ export const updateMenu = data => axiosService.PUT('/api/systemmanageservice/men
  */
 export const deleteMenu = data => axiosService.DELETE('/api/systemmanageservice/menu/' + data)
 
+/**
+ *
+ * 根据角色ID获取菜单树
+ */
+export const getMenuTreeByRoleId = data => axiosService.GET('/api/systemmanageservice/Menu/GetMenuTreeByRoleId/' + data)
+
+/**
+ *
+ * 根据角色Id保存该角色具有的菜单的Ids
+ */
+export const saveMenuIdsByRoleId = data => axiosService.POST('/api/systemmanageservice/rolemenu/' + data.roleId, data.menuIds)
