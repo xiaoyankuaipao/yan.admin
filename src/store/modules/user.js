@@ -61,6 +61,13 @@ const actions = {
   logout ({commit, state}) {
     clearToken()
     commit('RESET_STATE')
+  },
+  resetToken ({commit}) {
+    return new Promise(resolve => {
+      clearToken()
+      commit('RESET_STATE')
+      resolve()
+    })
   }
 }
 

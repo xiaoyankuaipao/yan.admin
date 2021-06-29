@@ -70,8 +70,8 @@ export default {
       ],
       typeValue: '',
       rules: {
-        name: [{ required: true, messsage: '请输入菜单名称', tigger: 'blur' }],
-        code: [{ required: true, messsage: '请输入菜单编码', tigger: 'blur' }]
+        name: [{ required: true, message: '请输入菜单名称', tigger: 'blur' }],
+        code: [{ required: true, message: '请输入菜单编码', tigger: 'blur' }]
       }
     }
   },
