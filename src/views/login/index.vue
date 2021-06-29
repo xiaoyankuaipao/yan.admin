@@ -59,14 +59,20 @@ export default {
         userName: [{ required: true, triggr: 'blur', message: '请输入用户名' }],
         password: [{ required: true, triggr: 'blur', message: '请输入密码' }]
       },
-      loading: false
+      loading: false,
+      redirect: undefined
     }
   },
   mounted () {
     this.showLoginForm = true
   },
   watch: {
-
+    $route: {
+      handler: function (route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
   },
   methods: {
     userFocusHandle (isFocus) {
@@ -80,7 +86,9 @@ export default {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', {userName: this.loginForm.userName, password: this.loginForm.password, clientId: 'vue-manage'}).then(() => {
-            this.$router.push('/')
+            // this.$router.push('/')
+            console.log(this.redirect)
+            this.$router.push({path: this.redirect || '/'})
             this.loading = false
           }).catch(error => {
             console.log(error)
